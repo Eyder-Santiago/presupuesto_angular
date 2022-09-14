@@ -13,7 +13,9 @@
 <div class="contenedor limpiarEstilos">
 
     <app-ingreso></app-ingreso>
-    <app-egreso></app-egreso>
+    <!--pasando información a egreso desde Padre app.component.ts-->
+    <app-egreso [ingresoTotal]="getIngresoTotal()"></app-egreso> 
+
 
 </div>
       
