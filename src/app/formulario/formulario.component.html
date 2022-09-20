@@ -1,17 +1,17 @@
 
-<form>
+  <form (ngSubmit)="f.form.valid && agregarValor()" #f="ngForm"> <!--referencias locales, ver si el formulario el valido al ser valores requeridos 'required'-->
     <div class="agregar">
         <div class="agregar_contenedor">
-            <select (change)="tipoOperacion($event)" [ngClass]="{redfocus: tipo === 'egresoOperacion'}" class="agregar_tipo"> <!--Se usa change para cambiar en el selector-->
+            <select (change)="tipoOperacion($event)" class="agregar_tipo" [ngClass]="{redfocus: tipo === 'egresoOperacion'}"> <!--Se usa change para cambiar en el selector-->
                 <option value="ingresoOperacion" selected>+</option>
                 <option value="egresoOperacion">-</option>
             </select>
             <!--se utilizará two way biding, [ngClass] redfocus desde styles, se iluminará rojo cuando se seleccione '-' de egresoOperación-->
             <input [ngClass]="{redfocus: tipo === 'egresoOperacion'}" type="text" class="agregar_descripcion" placeholder="Agregar Descripción" 
-                name="descripcionInput" [(ngModel)]="descripcionInput">
+                name="descripcionInput" [(ngModel)]="descripcionInput" required>
             <input [ngClass]="{redfocus: tipo === 'egresoOperacion'}" type="number" class="agregar_valor" placeholder="Valor" 
-                name="valorInput" [(ngModel)]="valorInput">
-            <button type="submit" class="agregar_btn" (click)="agregarValor()">
+                name="valorInput" [(ngModel)]="valorInput" required>
+            <button type="submit" class="agregar_btn">
                 <i [ngClass]="{red: tipo === 'egresoOperacion'}" class="ion-ios-checkmark-outline"></i> <!--red desde styles-->
             </button>
         </div>
